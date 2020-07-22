@@ -731,7 +731,7 @@ class widthOfBinaryTreeClass{
     this.root=null
   }
   addNodes(arr){
-    
+
   }
 }
 
@@ -756,3 +756,40 @@ var widthOfBinaryTree = function(root) {
   }
 }
 };
+
+/**
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @return {boolean}
+ */
+var canMeasureWater = function(x, y, z) {
+  if(x+y<z) return false;
+  if(x===z || y===z || x+y===z || z===Math.abs(x-y)) return true;
+  const multiples=function(a,b){
+      while(b!=0){
+          let temp=b;
+          b=a%b;
+          a=temp;
+      }
+      return a;
+  }
+  return z% multiples(x,y) ===0
+}
+
+function mainCanMeasureWater(){
+  // Input: x = 3, y = 5, z = 4
+  // Output: True
+  let x1=3
+  let y1=5
+  let z1=4
+  // Input: x = 2, y = 6, z = 5
+  // Output: False
+  let x2=2
+  let y2=6
+  let z2=5
+  console.log(canMeasureWater(x1,y1,z1)===true)
+  console.log(canMeasureWater(x2,y2,z2)===false)
+}
+
+mainCanMeasureWater()
