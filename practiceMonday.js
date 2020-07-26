@@ -792,4 +792,25 @@ function mainCanMeasureWater(){
   console.log(canMeasureWater(x2,y2,z2)===false)
 }
 
-mainCanMeasureWater()
+// mainCanMeasureWater()
+
+var numIdenticalPairs = function(nums) {
+  let numberOfIdenticialpairs = 0
+  for (let i=0;i<nums.length;i++){
+    for (let j=i+1;j<nums.length;j++){
+      if (nums[i]===nums[j]){numberOfIdenticialpairs++}
+    }
+  }
+  return numberOfIdenticialpairs
+};
+
+function mainNumIdenticalPairs(){
+  let nums1 = [1,2,3,1,1,3]
+  let nums2 = [1,1,1,1]
+  // Output: 4
+  // Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
+  console.log(numIdenticalPairs(nums1)===4)
+  console.log(numIdenticalPairs(nums2)===6)
+}
+
+mainNumIdenticalPairs()
