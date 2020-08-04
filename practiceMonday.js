@@ -813,4 +813,68 @@ function mainNumIdenticalPairs(){
   console.log(numIdenticalPairs(nums2)===6)
 }
 
-mainNumIdenticalPairs()
+// mainNumIdenticalPairs()
+
+/**
+ * @param {string} word
+ * @return {boolean}
+ */
+var detectCapitalUse = function(word) {
+  if (word.length===0){return false}
+  let splittedWordArray = word.split('')
+  //Check rule1 and return false if not fit
+  // All letters in this word are capitals, like "USA".
+  if (allLettersCapital(splittedWordArray)){return true}
+  //Check rule2  and return false if not fit
+  // All letters in this word are not capitals, like "leetcode".
+  if (allLettersLowercase(splittedWordArray)){return true}
+  //Check rule3  and return false if not fit
+  // Only the first letter in this word is capital, like "Google".
+  if (firstLetterCapitalOthersLowercase(splittedWordArray)){return true}
+  return false
+};
+
+function allLettersCapital(splittedWordArray){
+  let len=splittedWordArray.length
+  for (let i=0;i<len;i++){
+    if (!isUpperCase(splittedWordArray[i])){return false}
+  }
+  return true
+}
+
+function allLettersLowercase(splittedWordArray){
+  let len=splittedWordArray.length
+  for (let i=0;i<len;i++){
+    if (!isLowerCase(splittedWordArray[i])){return false}
+  }
+  return true
+}
+
+function firstLetterCapitalOthersLowercase(splittedWordArray){
+  let len=splittedWordArray.length
+  if (isUpperCase(splittedWordArray[0])){
+    for (let i=1;i<len;i++){
+      if (!isLowerCase(splittedWordArray[i])){return false}
+    }
+    return true
+  }
+  return false
+}
+function isUpperCase(myString) { 
+  return (myString === myString.toUpperCase()); 
+} 
+function isLowerCase(myString) { 
+  return (myString === myString.toLowerCase()); 
+} 
+
+function mainDetectCapitalUse(){
+  console.log(detectCapitalUse('USA')===true)
+  console.log(detectCapitalUse('USa')===false)
+  console.log(detectCapitalUse('UcA')===false)
+  console.log(detectCapitalUse('leetcode')===true)
+  console.log(detectCapitalUse('eetcoDe')===false)
+  console.log(detectCapitalUse('FlaG')===false)
+  console.log(detectCapitalUse('Google')===true)
+}
+
+// mainDetectCapitalUse()
